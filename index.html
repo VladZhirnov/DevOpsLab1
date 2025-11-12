@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Demo Сайт</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #4d90cd;
+            text-align: center;
+        }
+        .info {
+            background-color: #e7f3ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀🚀🚀 DevOps Демонстрация 🚀🚀🚀</h1>
+        <div class="info">
+            <p><strong>Версия:</strong> 1.0</p>
+            <p><strong>Дата:</strong> <span id="date"></span></p>
+        </div>
+        <p>Это простой пример того, как Git становится источником правды для всей системы.</p>
+        <p>Весь код, конфигурация и скрипты развертывания хранятся в одном репозитории!</p>
+    </div>
+
+    <script>
+        document.getElementById('date').textContent = new Date().toLocaleDateString('ru-RU');
+    </script>
+</body>
+</html>

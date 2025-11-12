@@ -1,0 +1,3 @@
+[submodule "CattyDevOps"]
+	path = CattyDevOps
+	url = https://github.com/VladZhirnov/catty-reminders-app.git
