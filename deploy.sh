@@ -9,7 +9,7 @@ echo "🚀 Деплой Catty приложения..."
 # Создаём директорию для приложения
 sudo mkdir -p $APP_DIR
 sudo rm -rf $APP_DIR/*
-sudo cp -r "/home/vboxuser/DevOpsLab1/CattyDevOps" "/opt"
+sudo cp -r "/home/vboxuser/DevOpsLab1/devops-website/CattyDevOps" "/opt"
 sudo chown -R vboxuser:vboxuser $APP_DIR
 cd $APP_DIR
 

@@ -15,7 +15,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 PORT = 8080
 DEPLOY_DIR = "/opt/CattyDevOps/"   # куда клонируем / обновляем проект
 REPO_URL = "https://github.com/VladZhirnov/catty-reminders-app.git"  # твой репо
-MAIN_DIR = "/home/vboxuser/DevOpsLab1/devops-website"
+MAIN_DIR = "/home/vboxuser/DevOpsLab1/devops-website/"
 BRANCH = "master"          # ветка для деплоя
 
 class WebhookHandler(BaseHTTPRequestHandler):
