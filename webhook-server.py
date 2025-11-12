@@ -13,10 +13,10 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 
 # Конфиг
 PORT = 8080
-DEPLOY_DIR = "/opt/CattyDevOps/"
-REPO_URL = "https://github.com/VladZhirnov/catty-reminders-app.git"
-MAIN_DIR = "/home/vboxuser/DevOps1/devops-website"
-BRANCH = "main"
+DEPLOY_DIR = "/opt/CattyDevOps/"   # куда клонируем / обновляем проект
+REPO_URL = "https://github.com/VladZhirnov/catty-reminders-app.git"  # твой репо
+MAIN_DIR = "/home/vboxuser/DevOpsLab1/devops-website"
+BRANCH = "master"          # ветка для деплоя
 
 class WebhookHandler(BaseHTTPRequestHandler):
 
@@ -54,8 +54,7 @@ class WebhookHandler(BaseHTTPRequestHandler):
         subprocess.run(["git", "config", "--global", "--add", "safe.directory", DEPLOY_DIR], check=False) 
         branch_ref = payload.get("ref", "")
         branch = branch_ref.replace("refs/heads/", "")
-        repo_name = payload.get("repository", {}).get("full_name", "")
-        print(f"➡️ Push в репозиторий: {repo_name}, ветка: {branch}")
+        print(f"➡️ Push в ветку: {branch}")
 
         if branch != BRANCH:
             print(f"⏭️ Пропускаем (ветка {branch} не равна {BRANCH})")
@@ -69,6 +68,12 @@ class WebhookHandler(BaseHTTPRequestHandler):
             subprocess.run(["git", "fetch"], cwd=DEPLOY_DIR, check=True)
             subprocess.run(["git", "checkout", BRANCH], cwd=DEPLOY_DIR, check=True)
             subprocess.run(["git", "pull", "origin", BRANCH], cwd=DEPLOY_DIR, check=True)
+
+        # build.sh (если есть)
+        build_script = os.path.join(MAIN_DIR, "build.sh")
+        if os.path.exists(build_script):
+            print("🔧 Запускаем build.sh...")
+            subprocess.run(["bash", build_script], cwd=DEPLOY_DIR, check=True)
 
         # test.sh (если есть)
         test_script = os.path.join(MAIN_DIR, "test.sh")

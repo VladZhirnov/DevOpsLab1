@@ -10,7 +10,7 @@ echo "🚀 Деплой Catty приложения..."
 sudo mkdir -p $APP_DIR
 sudo rm -rf $APP_DIR/*
 sudo cp -r "/home/vboxuser/DevOpsLab1/CattyDevOps" "/opt"
-sudo chown -R ubuntu:ubuntu $APP_DIR
+sudo chown -R vboxuser:vboxuser $APP_DIR
 cd $APP_DIR
 
 # Создаём виртуальное окружение для продакшена
